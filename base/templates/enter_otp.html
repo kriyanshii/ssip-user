@@ -12,7 +12,50 @@
     --button-blue: #134074;
     --light-blue: #EEF4ED;
     }
+    
+    /* body{
+        background: var(--primary);
+        color: white;
+    } */
+    body{
+        font-family: 'Poppins';
+    }
 
+    .card{
+        width: 300px;
+        padding: 20px;
+        margin: 20px auto;
+        height: 150px;
+        background: white;
+        box-shadow: 0px 20px 20px 20px var(--light-blue);
+        border-radius: 20px;
+    }
+
+    .username{
+        width: 100%;
+        height: 40px;
+        border-bottom: 2px solid var(--button-blue);
+        border-top: none;
+        border-right: none;
+        border-left: none;
+    }
+
+    .submit{
+        background: var(--primary);
+        border-style: outset;
+        border-color:var(--primary);
+        margin: 10px auto;
+        /* width: 70vw; */
+        width: 100px;
+        height: 40px;
+        border-radius: 20px;
+        color: white;
+        box-shadow: 5px 5px 5px #eee;
+        }
+
+        .submit:hover{
+        background: var(--button-blue);
+        }
     </style>
     <script language="JavaScript" type="text/javascript">
 
@@ -24,19 +67,19 @@
 </head>
 <body>
 
-<form action="/validate_otp" method="post">
+<form class="card" action="/validate_otp" method="post">
 
     Enter OTP here:
     <br><br>
-    <input type="text" name="Otp" id="Otp"><br><br>
-    <input type="submit">
+    <input class="username" type="text" name="Otp" id="Otp"><br><br>
+    <input class="submit" type="submit">
 
 </form>
 
 
-<form  class="" action="/resendOTP" method="post" id="form" style="display:none;">
+<form class="card" action="/resendOTP" method="post" id="form" style="display:none;">
     <p id="str">If you did not recieve OTP then try again after 1 minute</p>
-    <input type="submit" value="Try again">
+    <input class="submit" type="submit" value="Try again">
 </form>
 
 </body>
