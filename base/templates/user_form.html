@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+        :root{
+        --primary: #0B115C;
+        --button-blue: #134074;
+        --light-blue: #EEF4ED;
+        }
+
+        body{
+            font-family: 'Poppins';
+            font-size: 25pt;
+
+        }
+
+        /* .card{
+        margin: 100px auto;
+        max-width: 90vw;
+        height: 550px;
+        background: white;
+        box-shadow: 0px 20px 20px 20px var(--light-blue);
+        border-radius: 20px;
+        } */
+
+        .heading{
+            margin: 20px auto;
+            max-width: 90vw;
+            height: 200px;
+            background: white;
+            box-shadow: 0px 20px 20px var(--light-blue);
+            border-radius: 20px;
+            text-align: center;
+        } 
+
+        .dropdown{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .select-dropdown {
+            position: relative;
+            background-color: #E6E6E6;
+            border-radius: 4px;
+        }
+        .select-dropdown select {
+            font-size: 1rem;
+            font-weight: normal;
+            width: 50px;
+            /* max-width: 70%; */
+            padding: 8px 24px 8px 10px;
+            border: none;
+            background-color: transparent;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            appearance: none;
+        }
+        .select-dropdown select:active, .select-dropdown select:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .select-dropdown:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 8px;
+            width: 0;
+            height: 0;
+            margin-top: -2px;
+            border-top: 5px solid #aaa;
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+        }
+
+        .heading p{
+            font-weight: 500;
+            margin: 0;
+            /* opacity: 0.8; */
+        }
+
+        .q2{
+            height: 250px;
+            font-weight: 300;
+            padding: 0px 20px;
+            text-align: left;
+        }
+
+        .q3{
+            height: 350px;
+            font-weight: 300;
+            padding: 0px 20px;
+            text-align: left;
+        }
+
+        .q4{
+            height: 500px;
+        }
+
+        .q4 textarea{
+            height: 400px;
+            width: 100%;
+            border: 3px solid transparent;
+        }
+
+        .message{
+            font-weight: 300;
+            font-size: 15px;
+        }
+
+        .login{
+            padding: 30px;
+        }
+
+        .details{
+        margin: 20px 40px auto;
+        }
+
+        .username{
+        width: 100%;
+        height: 40px;
+        border-bottom: 2px solid var(--button-blue);
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        }
+
+        .login{
+        text-align: center; 
+        }
+
+        .forgot{
+        text-align: right;
+        font-size: 5px;
+        color:#a9a9a9;
+        }
+
+
+        .submit{
+        background: var(--primary);
+        border-style: outset;
+        border-color:var(--primary);
+        margin: 10px auto;
+        width: 70vw;
+        height: 40px;
+        border-radius: 20px;
+        color: white;
+        box-shadow: 5px 5px 5px #eee;
+        }
+
+        .submit:hover{
+        background: var(--button-blue);
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="heading">
+        <h2>Gujarat Police Feedback Form</h2>
+        <p>Please share your valuable Feedback</p>
+    </div>
+    <form action="/insert_user_feedback" method="post">
+        <div class="heading">
+            <label for="police_station_n-ame">Choose the PoliceStation:</label>
+            <div class="select-dropdown">
+            <select class="" name="police_station_name">
+                {% for i in list1 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select><br><br>
+            </div>
+        </div>
+        <div class="card">
+
+        </div>
+        <div class="heading q2">
+            <p>How did you come to the police station?</p>
+            <div class="radio">
+                <input  type="radio" value="a" id="a" name="question_1">
+                <label class="text" for="a">Through a person Known to a police officer</label> <br>
+                <input type="radio" value="b" id="b" name="question_1">
+                <label class="text" for="b">With neighbour/local leader</label> <br>
+                <input type="radio" value="c" id="c" name="question_1">
+                <label class="text" for="c">On your own</label>
+            </div>
+        </div>
+        <div class="heading q3">
+            <p>After how much time you were heard in Police Station</p>
+            <input type="radio" value="30" id="30" name="question_2">
+            <label for="30">More than 15 minutes</label><br>
+            <input type="radio" value="15" id="15" name="question_2">
+            <label for="15">15 minutes</label><br>
+            <input type="radio" value="10" id="10" name="question_2">
+            <label for="10">10 minutes</label><br>
+            <input type="radio" value="5" id="5" name="question_2">
+            <label for="5">5 minutes</label><br><br><br>
+        </div>
+        <div class="heading q4">
+            <p>How would you describe your experience with police officers in the
+                Police Station?(Max 300 words)</p>
+            <textarea name="paragraph"></textarea><br>
+        </div>
+
+        <div class="message">
+            {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color: darkred">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+            {% endwith %}
+        </div>
+
+        <input class="submit" type="submit">
+
+</form>
+
+</body>
+</html>

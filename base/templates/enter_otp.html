@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+    :root{
+    --primary: #0B115C;
+    --button-blue: #134074;
+    --light-blue: #EEF4ED;
+    }
+
+    </style>
+    <script language="JavaScript" type="text/javascript">
+
+        window.onload = function() {
+            form = document.getElementById("form");
+            setTimeout(function(){form.style.display = 'block';},60000);
+        }
+    </script>
+</head>
+<body>
+
+<form action="/validate_otp" method="post">
+
+    Enter OTP here:
+    <br><br>
+    <input type="text" name="Otp" id="Otp"><br><br>
+    <input type="submit">
+
+</form>
+
+
+<form  class="" action="/resendOTP" method="post" id="form" style="display:none;">
+    <p id="str">If you did not recieve OTP then try again after 1 minute</p>
+    <input type="submit" value="Try again">
+</form>
+
+</body>
+</html>

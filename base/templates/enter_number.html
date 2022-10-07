@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function myFunction() {
+          var input, filter, ul, li, a, i;
+          input = document.getElementById("district");
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("myMenu");
+          li = ul.getElementsByTagName("li");
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+</script>
+</head>
+<body>
+
+<form action='/handle_data' method="post">
+
+    Enter your Number:
+    <input type="text" name="phonenumber" id="phonenumber"><br><br>
+
+    <label for="district">Enter the District:</label>
+    <select name="district" id="district">
+    {% for i in uniques %}
+        <option value="{{ i }}">{{ i }}</option>
+    {% endfor %}
+    </select>
+    <br><br><input type="submit">
+
+</form>
+
+{% with messages = get_flashed_messages() %}
+         {% if messages %}
+               {% for message in messages %}
+                    <p style="color: darkred">{{ message }}</p>
+               {% endfor %}
+         {% endif %}
+{% endwith %}
+
+
+</body>
+</html>
