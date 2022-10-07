@@ -22,10 +22,11 @@
     }
 
     .card{
-        width: 300px;
+        font-size: 20pt;
+        width: 70vw;
         padding: 20px;
-        margin: 20px auto;
-        height: 150px;
+        margin: 40px auto;
+        height: 200px;
         background: white;
         box-shadow: 0px 20px 20px 20px var(--light-blue);
         border-radius: 20px;
@@ -38,6 +39,11 @@
         border-top: none;
         border-right: none;
         border-left: none;
+    }
+
+    .resend{
+        position: relative;
+        /* z-index: 100; */
     }
 
     .submit{
@@ -68,16 +74,12 @@
 <body>
 
 <form class="card" action="/validate_otp" method="post">
-
     Enter OTP here:
-    <br><br>
+    <br>
     <input class="username" type="text" name="Otp" id="Otp"><br><br>
     <input class="submit" type="submit">
-
 </form>
-
-
-<form class="card" action="/resendOTP" method="post" id="form" style="display:none;">
+<form class="resend" action="/resendOTP" method="post" id="form" style="display:none;">
     <p id="str">If you did not recieve OTP then try again after 1 minute</p>
     <input class="submit" type="submit" value="Try again">
 </form>
